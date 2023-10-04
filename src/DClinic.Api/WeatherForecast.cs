@@ -1,4 +1,4 @@
-namespace DClinic
+namespace DClinic.Api
 {
     public class WeatherForecast
     {
