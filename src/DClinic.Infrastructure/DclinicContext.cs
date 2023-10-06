@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
+using DClinic.Domain.Entities;
 namespace DClinic.Infrastructure;
 
 public partial class DclinicContext : DbContext

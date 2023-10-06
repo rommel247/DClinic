@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DClinic.Domain\DClinic.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

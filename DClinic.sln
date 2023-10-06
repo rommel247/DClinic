@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DB39842D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DClinic.Domain", "src\DClinic.Domain\DClinic.Domain.csproj", "{A9A249E4-C4A9-4D78-9939-A6AAA45EAF9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DClinic.Infrastructure", "src\DClinic.Infrastructure\DClinic.Infrastructure.csproj", "{1EE8C147-42F3-41FF-B968-58BB333549E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DClinic.Infrastructure", "src\DClinic.Infrastructure\DClinic.Infrastructure.csproj", "{1EE8C147-42F3-41FF-B968-58BB333549E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DClinic.Presentation", "src\DClinic.Presentation\DClinic.Presentation.csproj", "{BEDEF5CE-30F0-477B-8556-D14567CB1F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DClinic.Application", "src\DClinic.Presentation\DClinic.Application.csproj", "{BEDEF5CE-30F0-477B-8556-D14567CB1F5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DClinic.Api", "src\DClinic.Api\DClinic.Api.csproj", "{B21AACD6-D1E6-4506-BBD3-DB408518D34C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DClinic.Api", "src\DClinic.Api\DClinic.Api.csproj", "{B21AACD6-D1E6-4506-BBD3-DB408518D34C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DClinic.Application.UnitTests", "tests\DClinic.Application.UnitTests\DClinic.Application.UnitTests.csproj", "{E1E1C613-A2C6-4043-893F-98DBDDC2A27D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DClinic.Application.UnitTests", "tests\DClinic.Application.UnitTests\DClinic.Application.UnitTests.csproj", "{E1E1C613-A2C6-4043-893F-98DBDDC2A27D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DClinic.Infrastructure;
+namespace DClinic.Domain.Entities;
 
 public partial class PatientLog
 {
