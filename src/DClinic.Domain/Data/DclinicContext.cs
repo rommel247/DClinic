@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using DClinic.Domain.Entities;
-namespace DClinic.Infrastructure;
+namespace DClinic.Domain.Data;
 
 public partial class DclinicContext : DbContext
 {
@@ -61,9 +61,9 @@ public partial class DclinicContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
 
-            entity.HasOne(d => d.Patient).WithMany(p => p.PatientLogs)
-                .HasForeignKey(d => d.PatientId)
-                .HasConstraintName("FK_PatientLogs_Patients");
+            //entity.HasOne(d => d.Patient).WithMany(p => p.PatientLogs)
+            //    .HasForeignKey(d => d.PatientId)
+            //    .HasConstraintName("FK_PatientLogs_Patients");
 
             entity.HasOne(d => d.Reason).WithMany(p => p.PatientLogs)
                 .HasForeignKey(d => d.ReasonId)

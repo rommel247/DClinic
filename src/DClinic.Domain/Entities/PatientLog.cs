@@ -17,7 +17,7 @@ public partial class PatientLog
 
     public string Comments { get; set; }
 
-    public virtual Patient Patient { get; set; }
+    //public virtual Patient Patient { get; set; }
 
     public virtual Reason Reason { get; set; }
 }
