@@ -16,15 +16,33 @@ namespace DClinic.Domain.Repositories
         {
             _dbcontext = dbcontext;
         }
-    
-        public async Task AddAsync(T entity)
+
+        public async Task<T> AddAsync(T entity)
         {
-            await _dbcontext.Set<T>().AddAsync(entity);
-        }        
+            if (entity == null)
+            {
+                var msg = $"{nameof(entity)} must not be null";
+                throw new ArgumentNullException(msg);
+            }
+
+            try
+            {
+                _dbcontext.Add(entity);
+                await _dbcontext.SaveChangesAsync();
+                return entity;
+            }
+            catch(Exception ex)
+            {
+                var msg = $"{nameof(entity)} could not be saved:  {ex.Message}";
+                throw new Exception(ex.Message);
+            }
+
+
+        }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-           return await _dbcontext.Set<T>().ToListAsync();
+            return await _dbcontext.Set<T>().ToListAsync();
         }
 
         public async Task<T> GetbyIdAsync(int id)
@@ -32,9 +50,24 @@ namespace DClinic.Domain.Repositories
             return await _dbcontext.Set<T>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-             _dbcontext.Set<T>().Update(entity);
+            if (entity == null)
+            {
+                var msg = $"{nameof(entity)} must not be null";
+                throw new ArgumentNullException(msg);
+            }
+            try
+            {
+                _dbcontext.Set<T>().Update(entity);
+                await _dbcontext.SaveChangesAsync();
+                return entity;
+            }
+            catch(Exception ex)
+            {
+                var msg = $"{nameof(entity)} could not be updated:  {ex.Message}";
+                throw new Exception(ex.Message);
+            }        
         }
     }
 }
