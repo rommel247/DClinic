@@ -10,7 +10,7 @@ namespace DClinic.Domain.Interfaces
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetbyIdAsync(int id);
-        Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
+        Task<T> AddAsync(T entity);
+        Task <T> UpdateAsync(T entity);
     }
 }

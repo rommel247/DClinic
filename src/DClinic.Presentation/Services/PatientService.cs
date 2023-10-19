@@ -5,8 +5,10 @@ using DClinic.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace DClinic.Application.Services
 {
     public class PatientService : IPatientService
@@ -14,36 +16,46 @@ namespace DClinic.Application.Services
         private readonly IGenericRepository<Patient> _repository;
         private readonly IMapper _mapper;
         //TODO add mapper here and do the mapper prrofile
-        public PatientService(IGenericRepository<Patient> repository)
+        public PatientService(
+            IGenericRepository<Patient> repository,
+            IMapper mapper
+            )
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<int> AddPatient(PatientDto patient)
+        public async Task<int> AddPatientAsync(PatientDto patientDto)
         {
-            //var patient = 
-            var result = await _repository.AddAsync();
+            //add mapper
+            var patient = _mapper.Map<Patient>(patientDto);
+            var result = await _repository.AddAsync(patient);
             return result.Id;
         }
 
-        public Task<IEnumerable<PatientDto>> GetAllPatientHistory()
+        public async Task<IEnumerable<PatientDto>> GetAllPatientHistory()
         {
-            throw new NotImplementedException();
+            var patient = await _repository.GetAllAsync();
+           return _mapper.Map<IEnumerable<PatientDto>>(patient);
         }
 
-        public Task<IEnumerable<PatientDto>> GetByName(string name)
+        public async Task<IEnumerable<PatientDto>> GetByNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var patientEntity = await _repository.GetAllAsync();
+            return _mapper.Map<IEnumerable<PatientDto>>(patientEntity);
         }
 
-        public Task<PatientDto> GetPatientById(int id)
+        public async Task<PatientDto> GetPatientByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var patientResult = await _repository.GetbyIdAsync(id);
+            return _mapper.Map<PatientDto>(patientResult); ;
         }
 
-        public Task UpdatePatient(PatientDto patient)
+        public async Task<bool> UpdatePatientAsync(PatientDto patient)
         {
-            throw new NotImplementedException();
+           var patientEntity = _mapper.Map<Patient>(patient);
+           var updatedEntity = await _repository.UpdateAsync(patientEntity);
+            return (updatedEntity != null?true:false);
         }
     }
 }

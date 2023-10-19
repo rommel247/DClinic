@@ -9,13 +9,13 @@ namespace DClinic.Domain.Interfaces
 {
     public interface IPatientService
     {
-        public Task<PatientDto> GetPatientById(int id);
+        public Task<PatientDto> GetPatientByIdAsync(int id);
         public  Task<IEnumerable<PatientDto>> GetAllPatientHistory();
         //TODO replace with Command
-        public Task<int> AddPatient(PatientDto patient);
+        public Task<int> AddPatientAsync(PatientDto patient);
 
-        public Task UpdatePatient(PatientDto patient);
-        public Task<IEnumerable<PatientDto>> GetByName(string name);
+        public Task<bool> UpdatePatientAsync(PatientDto patient);
+        public Task<IEnumerable<PatientDto>> GetByNameAsync(string name);
 
     }
 }
