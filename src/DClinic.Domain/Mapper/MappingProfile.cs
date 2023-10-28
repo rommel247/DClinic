@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DClinic.Domain.Commands;
 using DClinic.Domain.Dtos;
 using DClinic.Domain.Entities;
 using System;
@@ -13,6 +14,8 @@ namespace DClinic.Domain.Mapper
     {
         public MappingProfile()
         {
+            CreateMap<Patient, CreatePatientCommand>().ReverseMap();
+            CreateMap<Patient, UpdatePatientCommand>().ReverseMap();
             CreateMap<Patient,PatientDto>().ReverseMap();
         }
     }

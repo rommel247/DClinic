@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DClinic.Domain.Mapper
 {
-    public static class AutoMapperSetup
+    public static class ServiceCollectionExtension
     {
         public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
         {
