@@ -25,7 +25,7 @@ namespace DClinic.Api.Controllers
         {
             var result = await _patientService.GetPatientByIdAsync(id);
             return result;
-        }
+        }        
 
         [HttpGet,Route("GetAll")]
         public async Task<IEnumerable<PatientDto>> GetAll()
