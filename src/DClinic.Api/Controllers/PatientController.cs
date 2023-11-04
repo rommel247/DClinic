@@ -33,6 +33,13 @@ namespace DClinic.Api.Controllers
             var result = await _patientService.GetAllPatientHistory();
             return result;
         }
+
+        [HttpGet, Route("GetByName")]
+        public async Task<IEnumerable<PatientDto>> GetByName(string name)
+        {
+            var result = await _patientService.GetByNameAsync(name);
+            return result ?? Enumerable.Empty<PatientDto>();
+        }
         
         //TODO add Response Type here 
         //TODO add Redis cache here

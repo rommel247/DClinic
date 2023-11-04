@@ -31,7 +31,7 @@ namespace DClinic.Application.Services
             //add mapper
             var patient = _mapper.Map<Patient>(command);
             var result = await _repository.AddAsync(patient);
-            if(result == null)
+            if (result == null)
             { return 0; }
             return result.Id;
         }
@@ -39,13 +39,17 @@ namespace DClinic.Application.Services
         public async Task<IEnumerable<PatientDto>> GetAllPatientHistory()
         {
             var patient = await _repository.GetAllAsync();
-           return _mapper.Map<IEnumerable<PatientDto>>(patient);
+            return _mapper.Map<IEnumerable<PatientDto>>(patient);
         }
 
         public async Task<IEnumerable<PatientDto>> GetByNameAsync(string name)
         {
             var patientEntity = await _repository.GetAllAsync();
-            return _mapper.Map<IEnumerable<PatientDto>>(patientEntity);
+            var patient = patientEntity.Where(x => 
+                                                    x.Fname.Contains(name,StringComparison.InvariantCultureIgnoreCase) || 
+                                                    x.Lname.Contains(name,StringComparison.InvariantCultureIgnoreCase) || 
+                                                    x.Mname.Contains(name,StringComparison.InvariantCultureIgnoreCase));
+            return _mapper.Map<IEnumerable<PatientDto>>(patient);
         }
 
         public async Task<PatientDto> GetPatientByIdAsync(int id)
